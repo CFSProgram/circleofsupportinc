@@ -1,348 +1,852 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Circle of Support Inc. (CFS)</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Circle of Support Inc. | Coordinated Family Support</title>
+    <meta
+      name="description"
+      content="Circle of Support Inc. provides coordinated family support services to adults with developmental disabilities and their families in Southern California."
+    />
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-        }
+      :root {
+        --purple-1: #8d4ec4;
+        --purple-2: #5d3eaf;
+        --blue-1: #1d6cbd;
+        --blue-2: #35b7c8;
+        --teal: #7ad9d7;
+        --navy: #0d3c79;
+        --ink: #1b2d4d;
+        --muted: #5e6880;
+        --light: #f7f8fc;
+        --white: #ffffff;
+        --line: #dfe7f5;
+      }
 
-        /* Header Section */
-        .header {
-            background: linear-gradient(135deg, #6047d3, #35b5c1);
-            padding: 0 40px 20px 40px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #f4f6fb;
+        color: var(--ink);
+      }
+      a { text-decoration: none; }
+      img { max-width: 100%; display: block; }
+      .container {
+        width: min(1180px, calc(100% - 36px));
+        margin: 0 auto;
+      }
+      .topbar {
+        background: linear-gradient(90deg, rgba(133,78,196,0.08), rgba(29,108,189,0.08));
+        border-bottom: 1px solid var(--line);
+      }
+      .topbar-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        padding: 16px 0;
+      }
+      .brand-mini {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 800;
+        color: var(--navy);
+      }
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, var(--purple-2), var(--blue-1));
+        position: relative;
+        box-shadow: 0 10px 22px rgba(93,62,175,0.18);
+      }
+      .brand-mark::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 20px;
+        height: 20px;
+        transform: translate(-50%, -50%);
+        border-radius: 4px;
+        background: rgba(255,255,255,0.95);
+      }
+      .brand-mark::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 15%;
+        width: 20px;
+        height: 20px;
+        transform: translateX(-50%);
+        background: rgba(255,255,255,0.95);
+        clip-path: polygon(50% 0%, 100% 35%, 100% 100%, 0% 100%, 0% 35%);
+      }
+      .nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: flex-end;
+      }
+      .nav a {
+        color: var(--navy);
+        font-weight: 700;
+      }
 
-        /* Text Logo (no image needed!) */
-        .logo-badge {
-            background-color: #ffffff;
-            padding: 10px 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .logo-monogram {
-            background: #6047d3;
-            color: #ffffff;
-            font-weight: 900;
-            font-size: 24px;
-            padding: 5px 12px;
-            border-radius: 8px;
-            line-height: 1.2;
-        }
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.2;
-        }
-        .logo-text .line1 {
-            font-size: 11px;
-            letter-spacing: 2.5px;
-            color: #6047d3;
-            font-weight: 700;
-        }
-        .logo-text .line2 {
-            font-size: 15px;
-            letter-spacing: 1px;
-            color: #35b5c1;
-            font-weight: 700;
-        }
+      .hero {
+        padding: 24px 0 40px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.2), rgba(247,248,252,0.8));
+      }
+      .logo-wrap {
+        text-align: center;
+        margin-top: 8px;
+      }
+      .cos-logo {
+        position: relative;
+        display: inline-block;
+        font-size: clamp(7rem, 20vw, 21rem);
+        line-height: 0.8;
+        font-weight: 900;
+        letter-spacing: -0.08em;
+        background: linear-gradient(90deg, var(--purple-1), var(--purple-2) 26%, var(--blue-1) 60%, var(--blue-2) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        filter: drop-shadow(0 12px 18px rgba(84, 61, 164, 0.12));
+        user-select: none;
+      }
+      .cos-logo::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 58%;
+        transform: translate(-50%, -50%);
+        width: 54%;
+        height: 52%;
+        background: rgba(255,255,255,0.22);
+        border-radius: 58% 42% 50% 50% / 59% 41% 59% 41%;
+        z-index: -1;
+      }
+      .house-badge {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -47%);
+        width: 26%;
+        aspect-ratio: 1;
+        background: rgba(255,255,255,0.96);
+        border-radius: 16px 16px 20px 20px;
+        box-shadow: inset 0 0 0 10px rgba(93,62,175,0.13);
+      }
+      .house-badge::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: -18%;
+        transform: translateX(-50%);
+        width: 72%;
+        height: 34%;
+        background: rgba(255,255,255,0.98);
+        clip-path: polygon(50% 0%, 100% 40%, 100% 100%, 0% 100%, 0% 40%);
+      }
+      .house-badge::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 22%;
+        height: 18%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, var(--purple-1), var(--blue-1));
+        border-radius: 6px 6px 0 0;
+        box-shadow: -18px 12px 0 0 rgba(255,255,255,0.92), 18px 12px 0 0 rgba(255,255,255,0.92), -18px 0 0 0 rgba(255,255,255,0.92), 18px 0 0 0 rgba(255,255,255,0.92), 0 20px 0 0 rgba(255,255,255,0.92);
+      }
+      .heart-badge {
+        position: absolute;
+        right: 18%;
+        top: 20%;
+        width: 42px;
+        height: 42px;
+        background: linear-gradient(135deg, var(--teal), #79cde7);
+        transform: rotate(-10deg);
+        border-radius: 50% 50% 0 50%;
+      }
+      .heart-badge::before, .heart-badge::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: inherit;
+        border-radius: 50%;
+      }
+      .heart-badge::before { left: -50%; top: 0; }
+      .heart-badge::after { left: 0; top: 50%; }
+      .brand-name {
+        margin-top: 14px;
+        font-size: clamp(2.2rem, 5vw, 6.4rem);
+        line-height: 0.9;
+        letter-spacing: -0.07em;
+        font-weight: 900;
+        color: var(--navy);
+      }
+      .divider {
+        width: min(540px, 90%);
+        height: 5px;
+        margin: 20px auto 0;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--teal), rgba(122,217,215,0.35));
+        position: relative;
+      }
+      .divider::after {
+        content: "♥";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: #f4f6fb;
+        padding: 0 12px;
+        color: var(--teal);
+        font-size: 24px;
+      }
+      .tagline {
+        text-align: center;
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: clamp(1rem, 1.8vw, 1.4rem);
+        font-weight: 700;
+      }
 
-        /* Navigation */
-        .nav-buttons {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-            flex-wrap: wrap;
-        }
+      .hero-card {
+        margin-top: 30px;
+        background: rgba(255,255,255,0.72);
+        border: 1px solid rgba(13,60,121,0.08);
+        border-radius: 30px;
+        box-shadow: 0 16px 45px rgba(25,35,55,0.06);
+        overflow: hidden;
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+      }
+      .hero-copy {
+        padding: 40px 36px;
+      }
+      .eyebrow {
+        display: inline-block;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        font-weight: 800;
+        color: var(--purple-2);
+        margin-bottom: 14px;
+      }
+      h1 { margin: 0 0 16px; font-size: clamp(2.2rem, 4vw, 4rem); line-height: 1.08; color: var(--navy); }
+      .lead {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.8;
+        font-size: 1.08rem;
+      }
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 28px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 50px;
+        padding: 0 26px;
+        border-radius: 999px;
+        font-weight: 800;
+      }
+      .btn-primary {
+        background: linear-gradient(135deg, var(--purple-2), var(--blue-1));
+        color: var(--white);
+        box-shadow: 0 12px 28px rgba(93,62,175,0.22);
+      }
+      .btn-secondary {
+        border: 1px solid var(--line);
+        background: rgba(255,255,255,0.8);
+        color: var(--navy);
+      }
+      .hero-visual {
+        position: relative;
+        background: linear-gradient(180deg, rgba(126,194,201,0.12), rgba(122,59,183,0.08));
+        min-height: 420px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .support-ribbon {
+        position: absolute;
+        left: 50%;
+        top: 12%;
+        width: 200px;
+        height: 90px;
+        transform: translateX(-50%) rotate(-12deg);
+        background: linear-gradient(90deg, rgba(122,59,183,0.95), rgba(86,204,212,0.9));
+        clip-path: polygon(0 40%, 35% 40%, 50% 0, 65% 40%, 100% 40%, 100% 58%, 65% 58%, 50% 100%, 35% 58%, 0 58%);
+        border-radius: 42px;
+        opacity: 0.97;
+      }
+      .figure-wrap {
+        position: relative;
+        width: min(100%, 380px);
+        aspect-ratio: 1;
+        display: flex;
+        align-items: end;
+        justify-content: center;
+        gap: 8px;
+      }
+      .person {
+        position: relative;
+        width: 170px;
+        height: 280px;
+      }
+      .head {
+        position: absolute;
+        left: 50%;
+        top: 10px;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: #f1c9a7;
+      }
+      .hair {
+        position: absolute;
+        left: 50%;
+        top: 4px;
+        transform: translateX(-50%);
+        width: 118px;
+        height: 74px;
+        background: #1e1f24;
+        border-radius: 54px 54px 28px 28px;
+      }
+      .face {
+        position: absolute;
+        left: 50%;
+        top: 30px;
+        transform: translateX(-50%);
+        width: 90px;
+        height: 76px;
+      }
+      .eye {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        top: 24px;
+        border-radius: 50%;
+        background: #1a1a1a;
+      }
+      .eye.left { left: 20px; }
+      .eye.right { right: 20px; }
+      .smile {
+        position: absolute;
+        left: 50%;
+        bottom: 12px;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 20px;
+        border-bottom: 5px solid #d77076;
+        border-radius: 0 0 24px 24px;
+      }
+      .shirt {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        width: 160px;
+        height: 150px;
+        border-radius: 28px 28px 18px 18px;
+      }
+      .shirt.blue { background: linear-gradient(180deg, #2b4bda, #124cb8); }
+      .shirt.green { background: linear-gradient(180deg, #47b8a4, #5ea79d); }
 
-        .nav-buttons a {
-            color: white;
-            text-decoration: none;
-            background: rgba(255,255,255,0.2);
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-        }
-        .nav-buttons a:hover {
-            background: rgba(255,255,255,0.4);
-        }
+      .section { padding: 86px 0; }
+      .section-header {
+        text-align: center;
+        margin-bottom: 34px;
+      }
+      .section-header h2 {
+        margin: 0 0 10px;
+        font-size: clamp(2rem, 3vw, 3rem);
+        color: var(--navy);
+      }
+      .section-header p {
+        max-width: 760px;
+        margin: 0 auto;
+        color: var(--muted);
+        line-height: 1.8;
+        font-size: 1.05rem;
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 24px;
+      }
+      .statement-card, .info-card, .service-card, .value-card, .contact-card {
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        box-shadow: 0 18px 44px rgba(17,27,44,0.05);
+      }
+      .statement-card { padding: 32px 28px; }
+      .statement-card p, .info-card p, .service-card p, .value-card p, .contact-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 24px;
+      }
+      .stat {
+        background: linear-gradient(180deg, rgba(93,62,175,0.05), rgba(29,108,189,0.04));
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 18px 16px;
+        font-weight: 700;
+        color: var(--ink);
+      }
+      .stat strong {
+        display: block;
+        font-size: 1.6rem;
+        color: var(--purple-2);
+      }
+      .info-card { padding: 32px 28px; }
+      .info-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 14px;
+      }
+      .info-list li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--ink);
+        font-weight: 700;
+      }
+      .check {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--purple-2), var(--blue-1));
+        color: var(--white);
+        font-size: 0.8rem;
+      }
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+      }
+      .service-card { padding: 28px 22px; }
+      .icon-box {
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 16px;
+        background: linear-gradient(135deg, rgba(93,62,175,0.12), rgba(29,108,189,0.12));
+        font-size: 1.8rem;
+        margin-bottom: 18px;
+      }
+      .service-card h3 {
+        margin: 0 0 10px;
+        color: var(--navy);
+        font-size: 1.2rem;
+      }
+      .mission-band {
+        background: linear-gradient(135deg, rgba(93,62,175,0.08), rgba(42,184,203,0.1));
+        border: 1px solid rgba(93,62,175,0.08);
+        border-radius: 28px;
+        padding: 30px 26px;
+        text-align: center;
+      }
+      .mission-band h3 {
+        margin: 8px 0 14px;
+        color: var(--navy);
+        font-size: clamp(1.7rem, 2.8vw, 2.5rem);
+      }
+      .mission-band p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+      .value-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+      }
+      .value-card { padding: 24px 18px; text-align: center; }
+      .value-card strong {
+        display: block;
+        margin-bottom: 10px;
+        color: var(--purple-2);
+        font-size: 1.08rem;
+      }
+      .contact-wrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      .contact-card { padding: 28px 24px; }
+      .contact-card h3 {
+        margin: 0 0 14px;
+        color: var(--navy);
+      }
+      .contact-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-top: 14px;
+        color: var(--ink);
+      }
+      .contact-label {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, rgba(93,62,175,0.1), rgba(29,108,189,0.08));
+        color: var(--purple-2);
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+      .contact-card a {
+        color: var(--navy);
+        font-weight: 800;
+      }
+      .details-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 22px;
+      }
+      .detail-box {
+        background: linear-gradient(180deg, rgba(80,173,181,0.06), rgba(93,62,175,0.04));
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 22px 18px;
+      }
+      .detail-box strong {
+        display: block;
+        margin-bottom: 10px;
+        color: var(--navy);
+      }
+      footer {
+        background: linear-gradient(135deg, var(--purple-2), var(--blue-1));
+        color: var(--white);
+        padding: 30px 0 40px;
+      }
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .footer-links {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .footer-links a {
+        color: var(--white);
+        border: 1px solid rgba(255,255,255,0.16);
+        background: rgba(255,255,255,0.08);
+        border-radius: 999px;
+        padding: 10px 14px;
+      }
 
-        /* Hero Section - WITH BACKGROUND */
-        .hero {
-            text-align: center;
-            padding: 60px 20px;
-            color: white;
-            background: linear-gradient(135deg, #6047d3, #35b5c1);
+      @media (max-width: 960px) {
+        .hero-grid, .about-grid, .services-grid, .value-grid, .contact-wrap, .details-grid {
+          grid-template-columns: 1fr;
         }
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+      }
+      @media (max-width: 640px) {
+        .topbar-inner, .footer-inner {
+          flex-direction: column;
+          text-align: center;
         }
-        .hero p {
-            font-size: 1.2rem;
-            font-weight: 300;
-        }
-
-        /* Main Content */
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        
-        h2 {
-            text-align: center;
-            color: #6047d3;
-            margin-bottom: 30px;
-            position: relative;
-        }
-        h2::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 4px;
-            background-color: #35b5c1;
-            margin: 10px auto 0;
-            border-radius: 2px;
-        }
-
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 60px;
-        }
-        .service-card {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        .service-card h3 {
-            color: #6047d3;
-        }
-        .service-card p {
-            font-size: 0.9rem;
-            line-height: 1.6;
-            color: #555;
-        }
-        .icon {
-            font-size: 2rem;
-            background: #e0f7fa;
-            color: #35b5c1;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px;
-        }
-
-        /* Mission Section */
-        .mission {
-            background: linear-gradient(135deg, #f3e5f5, #e0f7fa);
-            padding: 50px 20px;
-            text-align: center;
-            border-radius: 20px;
-            margin-bottom: 60px;
-        }
-        .mission-box {
-            background: white;
-            display: inline-block;
-            padding: 30px 40px;
-            border-radius: 50px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #6047d3;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        /* Why Choose Us */
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 60px;
-        }
-        .why-item {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            text-align: center;
-            font-weight: 500;
-            color: #555;
-        }
-
-        /* Contact Footer */
-        .footer {
-            background-color: #6047d3;
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-        }
-        .footer h2 {
-            color: white;
-            margin-bottom: 20px;
-        }
-        .footer h2::after {
-            background-color: #35b5c1;
-        }
-        .contact-item {
-            margin: 10px 0;
-            font-size: 1.1rem;
-        }
-        .contact-item a {
-            color: #35b5c1;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .contact-item a:hover {
-            text-decoration: underline;
-        }
-        
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                text-align: center;
-            }
-            .nav-buttons {
-                justify-content: center;
-            }
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            .logo-badge {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
+        .nav { justify-content: center; }
+        .hero-copy { padding: 30px 20px; }
+        .stats-grid { grid-template-columns: 1fr; }
+      }
     </style>
-</head>
-<body>
-
-    <!-- Header Section -->
-    <div class="header">
-        <!-- TEXT LOGO (no image needed, never breaks!) -->
-        <div class="logo-badge">
-            <span class="logo-monogram">COS</span>
-            <div class="logo-text">
-                <span class="line1">CIRCLE OF</span>
-                <span class="line2">SUPPORT INC.</span>
-            </div>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="container topbar-inner">
+        <div class="brand-mini">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>Circle of Support Inc.</span>
         </div>
-        
-        <div class="nav-buttons">
-            <a href="#about">About Us</a>
-            <a href="#services">Our Services</a>
-            <a href="#mission">Our Mission</a>
-            <a href="#why">Why Choose Us</a>
-            <a href="#contact">Contact</a>
-        </div>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#mission">Mission</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
     </div>
 
-    <!-- Hero / Slogan (FULLY VISIBLE NOW!) -->
-    <div class="hero">
-        <h1>CIRCLE OF SUPPORT INC.</h1>
-        <p>Together, we create a circle where everyone belongs.</p>
-    </div>
-
-    <!-- About Us -->
-    <div class="container" id="about">
-        <h2>About Us</h2>
-        <p style="text-align:center; max-width: 800px; margin: 0 auto 40px;">Circle of Support Inc. provides coordinated services and compassionate support to individuals and families navigating life's challenges. We believe that everyone deserves a circle of support, and we're here to help create that community through dedicated coordination, planning, and genuine care.</p>
-    </div>
-
-    <!-- Our Services -->
-    <div class="container" id="services">
-        <h2>Our Services</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="icon">📅</div>
-                <h3>Future Planning</h3>
-                <p>Helping families set goals and plan for a brighter future.</p>
-            </div>
-            <div class="service-card">
-                <div class="icon">🤝</div>
-                <h3>Care Provider Coordination</h3>
-                <p>Connecting families with trusted providers and community resources.</p>
-            </div>
-            <div class="service-card">
-                <div class="icon">🛡️</div>
-                <h3>Emergency Planning</h3>
-                <p>Preparing families for unexpected events with safety and peace of mind.</p>
-            </div>
-            <div class="service-card">
-                <div class="icon">📍</div>
-                <h3>Regional Center Services</h3>
-                <p>Supporting access to regional center programs and services.</p>
-            </div>
-            <div class="service-card">
-                <div class="icon">🏡</div>
-                <h3>Community-Based Support</h3>
-                <p>Providing in-home and community supports that build independence.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Our Mission -->
-    <div class="container" id="mission">
-        <div class="mission">
-            <h2>Our Mission</h2>
-            <p style="margin-bottom: 20px;">To empower individuals and families through coordinated care, planning, and community partnerships—creating a circle where everyone belongs.</p>
-            <div class="mission-box">
-                Together, we create a circle where everyone belongs.
-            </div>
-        </div>
-    </div>
-
-    <!-- Why Choose Us -->
-    <div class="container" id="why">
-        <h2>Why Choose Us?</h2>
-        <div class="why-grid">
-            <div class="why-item">💜 Family-centered care</div>
-            <div class="why-item">💜 Experienced and compassionate staff</div>
-            <div class="why-item">💜 Strong community partnerships</div>
-            <div class="why-item">💜 Personalized support plans</div>
-            <div class="why-item">💜 Commitment to empowerment and independence</div>
-        </div>
-    </div>
-
-    <!-- Contact Footer -->
-    <div class="footer" id="contact">
-        <h2>We're here to support your journey.</h2>
-        <p style="margin-bottom: 20px;">Contact Us</p>
-        
-        <div class="contact-item">
-            📞 Phone: <a href="tel:3233887534">323-388-7534</a>
-        </div>
-        <div class="contact-item">
-            ✉️ Email: <a href="mailto:cos.mainpage@gmail.com">cos.mainpage@gmail.com</a>
-        </div>
-        <div class="contact-item">
-            🌐 Website: <a href="/">circleofsupportinc.org</a>
+    <header class="hero">
+      <div class="container">
+        <div class="logo-wrap" aria-label="Circle of Support logo">
+          <div class="cos-logo" aria-hidden="true">
+            <span class="house-badge" aria-hidden="true"></span>
+            <span class="heart-badge" aria-hidden="true"></span>
+            COS
+          </div>
+          <div class="brand-name">CIRCLE OF<br />SUPPORT INC.</div>
+          <div class="divider" aria-hidden="true"></div>
+          <div class="tagline">Together, we create a circle where everyone belongs.</div>
         </div>
 
-        <p style="margin-top: 30px; font-size: 0.9rem;">Stella Keshishyan<br>Administrative Director</p>
-        <p style="margin-top: 20px; font-size: 0.8rem;">&copy; 2026 Circle of Support Inc. (CFS)</p>
-    </div>
+        <div class="hero-card">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <span class="eyebrow">Coordinated Family Support</span>
+              <h1>Compassionate support for independence, dignity, and community living.</h1>
+              <p class="lead">
+                Circle of Support Inc. is dedicated to helping adults with developmental disabilities live with greater independence, strengthen family support systems, and connect to regional center and community resources while remaining in the family home.
+              </p>
+              <div class="cta-row">
+                <a class="btn btn-primary" href="#contact">Contact Us</a>
+                <a class="btn btn-secondary" href="#services">Our Services</a>
+              </div>
+            </div>
+            <div class="hero-visual" aria-hidden="true">
+              <div class="support-ribbon"></div>
+              <div class="figure-wrap">
+                <div class="person">
+                  <div class="hair"></div>
+                  <div class="head"></div>
+                  <div class="face">
+                    <span class="eye left"></span>
+                    <span class="eye right"></span>
+                    <span class="smile"></span>
+                  </div>
+                  <div class="shirt blue"></div>
+                </div>
+                <div class="person">
+                  <div class="hair"></div>
+                  <div class="head"></div>
+                  <div class="face">
+                    <span class="eye left"></span>
+                    <span class="eye right"></span>
+                    <span class="smile"></span>
+                  </div>
+                  <div class="shirt green"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
 
-</body>
+    <main>
+      <section class="section" id="about">
+        <div class="container">
+          <div class="section-header">
+            <h2>About Circle of Support Inc.</h2>
+            <p>
+              We are a culturally responsive and family-centered agency supporting adults with developmental disabilities in living fuller, more independent lives within their family homes.
+            </p>
+          </div>
+
+          <div class="about-grid">
+            <div class="statement-card">
+              <p>
+                Circle of Support Inc. is dedicated to supporting individuals with developmental disabilities in improving their quality of life through community building and independent growth. Our Coordinated Family Support program is designed to support adults, 18 years of age and older, who choose to live with their families and benefit from access to regional center and community resources.
+              </p>
+              <div class="stats-grid">
+                <div class="stat"><strong>18+</strong> age eligible</div>
+                <div class="stat"><strong>200</strong> service recipients</div>
+                <div class="stat"><strong>5+</strong> languages</div>
+                <div class="stat"><strong>3</strong> service areas</div>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <ul class="info-list">
+                <li><span class="check">✓</span> Regional center consumers</li>
+                <li><span class="check">✓</span> Family-home based services</li>
+                <li><span class="check">✓</span> Community-integrated support</li>
+                <li><span class="check">✓</span> Culturally responsive care</li>
+                <li><span class="check">✓</span> Training for consumers and families</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="services">
+        <div class="container">
+          <div class="section-header">
+            <h2>What We Do</h2>
+            <p>
+              Our program is personalized to each consumer and family, focusing on skills, independence, training, scheduling, backup support, future planning, and access to meaningful community resources.
+            </p>
+          </div>
+
+          <div class="services-grid">
+            <article class="service-card">
+              <div class="icon-box">📅</div>
+              <h3>Scheduling of Services</h3>
+              <p>We help coordinate appointments, community activities, and service routines while keeping a clear and reliable schedule for the family.</p>
+            </article>
+
+            <article class="service-card">
+              <div class="icon-box">🎓</div>
+              <h3>Training & Education</h3>
+              <p>We provide tailored support in communication, self-care, health literacy, transportation, social skills, and access to regional and community services.</p>
+            </article>
+
+            <article class="service-card">
+              <div class="icon-box">🛟</div>
+              <h3>Backup Support</h3>
+              <p>We help families create contingency plans for unexpected changes in routine, transportation, appointments, or caregiver transitions.</p>
+            </article>
+
+            <article class="service-card">
+              <div class="icon-box">🚀</div>
+              <h3>Maximize Independence</h3>
+              <p>We focus on skill-building in self-care, household tasks, travel, money management, communication, and community participation.</p>
+            </article>
+
+            <article class="service-card">
+              <div class="icon-box">📚</div>
+              <h3>Additional Resources</h3>
+              <p>We connect families to useful information and resources related to diagnoses, Medi-Cal, SSI, Medicare, CalFresh, and community support programs.</p>
+            </article>
+
+            <article class="service-card">
+              <div class="icon-box">🏡</div>
+              <h3>Future Planning</h3>
+              <p>We support long-term planning for family transitions, housing, aging caregivers, supported living options, and maintaining safety and dignity.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="mission">
+        <div class="container">
+          <div class="mission-band">
+            <span class="eyebrow">Our Mission</span>
+            <h3>Empowering adults with developmental disabilities to live with greater independence, autonomy, and belonging.</h3>
+            <p>
+              Our program is centered on the individual, while also recognizing the essential role of the consumer's circle of support. We believe in culturally responsive care, family partnership, and practical training that respect each person's goals and lived experience.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Service Details</h2>
+          </div>
+          <div class="details-grid">
+            <div class="detail-box">
+              <strong>Operating Hours</strong>
+              <p>Monday to Saturday: 8:00 AM – 8:00 PM<br />Office Hours: Monday to Friday: 9:00 AM – 4:00 PM</p>
+            </div>
+            <div class="detail-box">
+              <strong>Languages Supported</strong>
+              <p>English, Spanish, Russian, Persian, and Armenian</p>
+            </div>
+            <div class="detail-box">
+              <strong>Service Areas</strong>
+              <p>San Fernando Valley (SFV), South Central (SC), and Antelope Valley (AV)</p>
+            </div>
+            <div class="detail-box">
+              <strong>Program Capacity</strong>
+              <p>Up to 200 service recipients</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Why Families Choose Us</h2>
+          </div>
+          <div class="value-grid">
+            <div class="value-card">
+              <strong>Family-Centered</strong>
+              <p>We support both the individual and the people who care for them.</p>
+            </div>
+            <div class="value-card">
+              <strong>Culturally Responsive</strong>
+              <p>We match services with the consumer's language and cultural background.</p>
+            </div>
+            <div class="value-card">
+              <strong>Practical Support</strong>
+              <p>We help families navigate services, schedules, and community resources.</p>
+            </div>
+            <div class="value-card">
+              <strong>Long-Term Goals</strong>
+              <p>We create pathways toward independence, stability, and future planning.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="container">
+          <div class="section-header">
+            <h2>Contact Us</h2>
+            <p>We are here to support families and individuals in building a stronger future with dignity and confidence.</p>
+          </div>
+
+          <div class="contact-wrap">
+            <div class="contact-card">
+              <h3>Agency Information</h3>
+              <div class="contact-row"><span class="contact-label">📍</span><span>7240 Hayvenhurst Place, Suite 247<br />Van Nuys, CA 91406</span></div>
+              <div class="contact-row"><span class="contact-label">☎</span><a href="tel:3233887534">(323) 388-7534</a></div>
+              <div class="contact-row"><span class="contact-label">🚨</span><a href="tel:8184391029">(818) 439-1029</a> (Emergency)</div>
+            </div>
+
+            <div class="contact-card">
+              <h3>Program Contact</h3>
+              <p>Circle of Support Inc.<br />Coordinated Family Support Program</p>
+              <p style="margin-top: 14px; font-size: 0.95rem;">We work with consumers and their families through person-centered planning, skill-building, and practical support tailored to their goals and cultural needs.</p>
+              <p style="margin-top: 18px;"><strong>Administrative Director:</strong><br />Stella Keshishyan</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <div>© 2026 Circle of Support Inc. (CFS)</div>
+        <div class="footer-links">
+          <a href="tel:3233887534">Call</a>
+          <a href="mailto:cos.mainpage@gmail.com">Email</a>
+          <a href="https://circleofsupportinc.org">Website</a>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
